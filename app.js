@@ -86,6 +86,17 @@ app.put("/ideas/edit/:id", (req, res) => {
     .catch(error => console.log(error));
 });
 
+// DELETE Delete idea route
+app.delete("/ideas/delete/:id", (req, res) => {
+  Idea.remove({
+    _id: req.params.id
+  })
+    .then(() => {
+      res.redirect("/ideas");
+    })
+    .catch(error => console.log(error));
+});
+
 // GET Add idea route
 app.get("/ideas/add", (req, res) => {
   res.render("ideas/add");
