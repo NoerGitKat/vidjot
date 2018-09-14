@@ -3,6 +3,10 @@ const app = express();
 const exphbs = require("express-handlebars");
 const mongoose = require("mongoose");
 
+// Load Ideas Model
+const IdeaModel = require("./models/idea");
+const Idea = mongoose.model("ideas");
+
 // Handlebars Middleware
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
@@ -12,9 +16,14 @@ app.use(express.static("public"));
 
 // Connecting DB
 mongoose
-  .connect("mongodb://localhost/vidjot-dev")
+  .connect(
+    "mongodb://localhost/vidjot-dev",
+    { useNewUrlParser: true }
+  )
   .then(() => console.log("MongoDB Connected..."))
   .catch(error => console.log(error));
+
+console.log("Idea", Idea);
 
 const port = 5000;
 
