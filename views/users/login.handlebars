@@ -1,12 +1,18 @@
+{{#each errors}}
+<div class="alert alert-danger">{{errorText}}</div>
+{{else}}
+
+{{/each}}
+
 <div class="row">
   <div class="col-md-6 mx-auto">
     <div class="card card-body">
       <h3 class="text-center">Login</h3>
       <form action="/users/login" method="POST">
-      <div class="form-group">
-        <input class="form-control mb-3" type="text" name="Email" placeholder="Email address" required="required">
-        <input class="form-control mb-3" type="password" name="password" placeholder="Password" required="required">
-        <button class="btn btn-primary" type="submit">Login</button>
+        <div class="form-group">
+          <input class="form-control mb-3" type="text" name="Email" placeholder="Email address" required="required">
+          <input class="form-control mb-3" type="password" name="password" placeholder="Password" required="required">
+          <button class="btn btn-primary" type="submit">Login</button>
       </form>
     </div>
   </div>
