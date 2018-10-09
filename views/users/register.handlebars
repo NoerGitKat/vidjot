@@ -9,10 +9,10 @@
     <div class="card card-body">
       <h3 class="text-center">Register</h3>
       <form action="/users/register" method="POST">
-        <input type="text" class="form-control mb-3" required="required" placeholder="Name">
-        <input type="text" class="form-control mb-3" required="required" placeholder="Email Address">
-        <input type="password" class="form-control mb-3" required="required" placeholder="Password">
-        <input type="password" class="form-control mb-3" required="required" placeholder="Confirm Password">
+        <input type="text" class="form-control mb-3" name="name" required="required" placeholder="Name">
+        <input type="email" class="form-control mb-3" name="email" required="required" placeholder="Email Address">
+        <input type="password" class="form-control mb-3" name="password" required="required" placeholder="Password">
+        <input type="password" class="form-control mb-3" name="confirmPassword" required="required" placeholder="Confirm Password">
         <button class="btn btn-primary" type="submit">Create Account</button>
       </form>
     </div>
