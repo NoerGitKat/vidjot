@@ -8,6 +8,9 @@ const mongoose = require('mongoose');
 const methodOverride = require('method-override');
 const passport = require('passport');
 
+// Import DB
+const { mongoURI } = require('./config/db');
+
 // Import routes
 const ideasRouter = require('./routes/ideas');
 const usersRouter = require('./routes/users');
@@ -57,13 +60,13 @@ app.use(function(req, res, next) {
 // Connecting DB
 mongoose
 	.connect(
-		'mongodb://localhost/vidjot-dev',
+		mongoURI,
 		{ useNewUrlParser: true }
 	)
 	.then(() => console.log('MongoDB Connected...'))
 	.catch(error => console.log(error));
 
-const port = 5000;
+const port = process.env.PORT || 5000;
 
 // GET Home route
 app.get('/', (req, res) => {
