@@ -7,6 +7,9 @@ const router = express.Router();
 // Import util functions
 const validateRegisterForm = require('./../utils/validation/validateRegisterForm');
 
+// Authentication check
+const { ensureAuthenticated } = require('./../helpers/auth');
+
 // Load Users Model
 const UserModel = require('../models/user');
 const User = mongoose.model('users');
@@ -31,9 +34,9 @@ router.post('/login', (req, res, next) => {
 });
 
 // GET User logout route
-router.get('/logout', (req, res) => {
+router.get('/logout', ensureAuthenticated, (req, res) => {
 	req.logout();
-	req.flash('success_msg', 'You have succesfully logged out!');
+	req.flash('success_msg', 'You succesfully logged out!');
 	res.redirect('/users/login');
 });
 
